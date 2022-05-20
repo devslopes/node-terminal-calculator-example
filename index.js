@@ -25,3 +25,5 @@ const isUserInputValid = validateAllInput(isNumOneValid, isNumTwoValid, isOperat
 if (isUserInputValid) {
   console.log("The result is ", calculationResult(num1, num2, operation));
 }
+
+module.exports = calculationResult;
