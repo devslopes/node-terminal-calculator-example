@@ -13,7 +13,7 @@ describe('Testing the calculation results', () => {
   test('Valid nums, valid operation Divide', () => {
     expect(calculationResult(16, 8, '/')).toBe("2.00");
   });
-  test('Devide By 0 returns an error', () => {
+  test('Divide By 0 returns an error', () => {
     expect(calculationResult(4, 0, '/')).toBe("Err: Can't divide by 0");
   });
 })
