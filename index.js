@@ -1,8 +1,5 @@
 const rs = require('readline-sync');
-const validateOperation = require('./src/validateOperation/validateOperation');
-const validateNum = require('./src/validateNum/validateNum');
-const validateAllInput = require('./src/validateAllInput/validateAllInput');
-const calculationResult = require('./src/calculationResult/calculationResult');
+const { calculationResult, validateAllInput, validateNum, validateOperation} = require('./include.js');
 
 const validOperations = ["+", "-", "*", "/"];
 
@@ -10,9 +7,9 @@ const operation = rs.question(
   'What operation would you like to perform? (+ - * /): ',
   {limit: validOperations, limitMessage:"This is not a valid operation"}
 );
-const options = operation === '/'
-  ? {limit: function(input) {return input !== '0' && !isNaN(input) }, limitMessage: "This is not a valid number"}
-  : {limit: function(input) {return !isNaN(input)}, limitMessage: "This is not a valid number"};
+
+const optionReturn = (input) => (operation === '/' ? (input !== '0' && !isNaN(input)) : !isNaN(input));
+const options = {limit: function(input) {return optionReturn(input)}, limitMessage: "This is not a valid number"};
 
 const num1 = rs.questionInt('What is the first number? ', {limitMessage: "This is not a valid number"});
 const num2 = +rs.question('What is the second number? ', options);
